@@ -1,8 +1,8 @@
-rom interface import Interface, implements
+from interface import Interface, implements
 from SystemMember import SystemMember
 
 
-class User(SystemMember):
+class User(implements(SystemMember)):
     email, order_list, password = None, None, None
 
     def add_to_order(self, new_book):

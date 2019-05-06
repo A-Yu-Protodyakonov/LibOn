@@ -2,7 +2,7 @@ from interface import Interface, implements
 from SystemMember import SystemMember
 
 
-class Administrator(SystemMember):
+class Administrator(implements(SystemMember)):
     email, password = None, None
 
     def add_book(self, new_book):

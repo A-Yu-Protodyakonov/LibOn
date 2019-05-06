@@ -1,6 +1,6 @@
-from interface import Interface, implements
 
-class Rubric(Interface):
+
+class Rubric:
     rubric_name = None
 
     def set_rubric(self, name):
@@ -8,3 +8,4 @@ class Rubric(Interface):
 
     def get_rubric(self):
         return self.rubric_name
+
