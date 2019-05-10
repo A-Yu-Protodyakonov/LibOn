@@ -1,0 +1,158 @@
+	body{
+			margin: 0;
+			font-family: arial, sans-serif;
+			margin-top: 90px;
+		}
+
+		h1{
+			margin-top: 20px;
+			text-align: center;
+			font-size: 2.5em;
+			font-family: "Segoe UI", sans-serif;
+			color: #8B0000;
+			margin-top: 1px;
+		}
+
+		.header{
+			background-color: rgba(255, 255, 255, 0.7);
+			height: 90px;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			border-bottom: 2px solid silver; 
+			width: 100%;
+		}
+
+		.logo{
+			margin-top: 35px; 
+			margin-left: 20px;
+			float: left;
+			width: 100px;
+			font-size: 2em;
+			font-family: Comic Sans MS, sans-serif;
+			color: #8B0000;
+		}
+
+		a {
+			color: #8B0000;
+			text-decoration: none;
+			transition: all.6s ease;
+			-moz-transition: all.6s ease;
+		}
+
+		a:hover {
+			color: #8B0000;
+			text-decoration: none;
+			transition: all.6s ease;
+			-moz-transition: all.6s ease;
+		}
+
+		a:active {
+			color: #8B008B;
+		}
+
+		.logo a:hover {
+			color: #000000;
+
+		}
+
+		::selection{background: #F58B8B; color: #fff}
+		::-moz-selection{background: #F58B8B; color: #fff}
+
+		.menu a {
+			padding: 5px 10px;
+			border-radius: 5px;
+			margin-right: 5px;
+			color: #000000;
+		}
+
+		.menu a:hover {
+			background-color: #ececec; 
+		}
+
+		 input[type=text].field {
+ 			border-radius: 5px;
+ 			border: 2px solid silver;
+ 			padding: 5px;
+ 			margin-left: 20px;
+ 			outline: none;
+
+ 		}
+
+ 		input[type=text].field:focus {
+ 			border: 2px solid #FF8C00;
+ 		}
+
+		.clear{
+			clear: both;
+		}
+
+		.footer{
+			border-top: 1px solid black;
+			padding: 10px 10px; 
+		}
+
+		 .right {
+ 			float: right;
+ 		}
+
+ 		.left {
+ 			float: left;
+ 		}
+
+ 		.clear {
+ 			clear: both;
+		}
+
+		.big-image{
+			padding: 5px 0;
+			text-align: center;
+			background: url("img/bg1.jpg");
+			color: white;
+		}
+
+		.big-image img{
+			height: 400px;
+			width: 100%;
+		}
+
+		.container{
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.container img{
+			width: 200px;
+			height: 100px;
+			margin-top: 0px;
+			margin-right: 10px;
+			padding: 0 0;
+
+		}
+
+		.menu{
+			list-style: none;
+			margin-top: 20px;
+			float: right;
+		}
+
+		.menu .item{
+			float: left;
+			position: relative;
+			top: 25px;
+		}
+
+		.menu .item > a{
+			text-decoration: none;
+			color:  #000000;
+			font-size: 24px;
+		}
+
+		.content{
+			padding: 50px;
+		}
+
+		.content table{
+			position: sticky;
+			padding: 50px 450px;
+		}
