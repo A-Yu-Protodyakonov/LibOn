@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" type="image/x-icon" href="img/library.png" />
-<title>LibOn :: Вход</title>
+<title>LibOn :: Мой профиль</title>
 </head>
 <body>
 <div class="header">
@@ -15,9 +15,12 @@
 			<a href="main.html" title="На главную"> LibOn </a>
 		</div>
 
+		<div class="leftmenu">
+			<a href="profile.html"> Мой профиль </a>
+		</div>
+
 		<ul class="menu">
-			<li class="item"><a href="registration.html">Регистрация</a></li>
-			<li class="item"><a href="auth.html"> Вход </a></li>
+			<li class="item"><a href="auth.html"> Выход </a></li>
 		</ul>
 
 		 <div class="clear"></div>
@@ -28,37 +31,40 @@
 
 <div class="content">
 
-    <h1> Вход <h1>
+    <h1> Приветствуем! <h1>
 
-	<form method='post' class='reg-form' action="profile.html">
+    <h2>Ваши книги</h2>
 
-		<div class='form-row'>
-			<label for='form_email'>Логин</label><br>
-    		<input type='email' id='form_email' name='email'>
-  		</div>
+    <div class="tb">
+	
+		<table cols="3" border="2" align="center" cellpadding="5">
 
-
-		<div class='form-row'>
-    		<label for='form_fpass'>Пароль</label><br>
-    		<input type='password' id='form_fpass' name='password'>
-		</div>
-
-
-		<div class="form-row">
-			<input type="submit" value='Войти'>
-		</div>
-		</form>
-
+			<tr>
+    			<th>Название</th>
+    			<th>Автор</th>
+   				<th>Срок сдачи</th>
+  			</tr>
+ 
+  		</table>
 	</div>
 
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
-<div class="clear"><br /></div>
+	<h2>Ваши подписки</h2>
+
+    <div class="tb">
+	
+		<table cols="3" border="2" align="center" cellpadding="5">
+
+			<tr>
+    			<th>Название</th>
+    			<th>Последний выпуск</th>
+   				<th>Дата окончания подписки</th>
+  			</tr>
+ 
+  		</table>
+	</div>
+
+</div>
+
 <div class="clear"><br /></div>
 
 <div class="footer">
