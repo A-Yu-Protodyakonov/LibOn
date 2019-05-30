@@ -1,4 +1,4 @@
-from interface import Interface, implements
+#from interface import Interface, implements
 
 
 class SystemMember:
