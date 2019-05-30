@@ -24,6 +24,7 @@ class Administrator(SystemMember):
         cursor.execute("INSERT INTO BOOK (BOOK_NAME, AUTHOR, RENTAL_TIME, BOOK_TYPE, RUBRIC_ID) VALUES (\"{}\", \"{}\","
                        "{},{},{});".format(new_book.element_name, new_book.Author, new_book.rentalTime, new_book.type,
                                            rubric_id[0]))
+        cursor.execute("insert into BOOK_ADMINISTRATOR values ({}, {});".format(new_book.id, self.id))
         connect.commit()
 
     def delete_book(self, book: Book):
