@@ -1,4 +1,4 @@
-	body{
+body{
 			margin: 0;
 			font-family: arial, sans-serif;
 			margin-top: 90px;
@@ -102,7 +102,7 @@
 			padding: 10px 10px; 
 		}
 
-		 .right {
+		.right {
  			float: right;
  		}
 
@@ -170,24 +170,53 @@
 			padding: 50px;
 		}
 
-		.content table{
+		.content .tu table{
 			position: sticky;
 			padding: 50px 450px;
 		}
 
-		.form-row {
+		.content .tp table{
+			width:70%;
+			margin-left: 250px;
+
+
+
+		}
+
+		.content th{
+		  font-size: 13px;
+		  font-weight: normal;
+		  background: #b9c9fe;
+		  border-top: 4px solid #aabcfe;
+		  border-bottom: 1px solid #fff;
+		  color: #039;
+		  padding: 8px;
+		}
+
+		.content td{
+		  background: #decfc3;
+		  border-bottom: 1px solid #fff;
+		  color: #669;
+		  border-top: 1px solid transparent;
+		  padding: 8px;
+		}
+		
+		tr:hover td{background: #ccddff;}
+
+
+		.form-row{
 			margin-bottom: 8px;
 			overflow: hidden;
 			font-size: 20px;
 			
 		}
 
-		.form-row label {
+		.form-row label{
 			
 			margin-left: 35px; 
 		}
 
-		.form-row input {
+		.form-row input{
 			float: right;
 			height: 19px;
 			line-height: 190px;
@@ -231,3 +260,34 @@
 			font-size: 20px;
 		}
 
+	
+		.content .tb table{
+		  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		  font-size: 14px;
+		  max-width: 70%;
+		  width: 70%;
+		  text-align: center;
+		  border-collapse: collapse;
+		  border-top: 7px solid #261d1a;
+		  border-bottom: 7px solid #261d1a;
+		}
+
+		.tb th{
+		  font-size: 13px;
+		  font-weight: normal;
+		  background: #6e493d;
+		  border-top: 4px solid #aabcfe;
+		  color: #000;
+		  padding: 8px;
+		 }
+
+		.tb td{
+		  background: #decfc3;
+		  color: #000;
+		  border-top: 1px solid transparent;
+		  padding: 8px;
+		}
+
+		tr:hover td{background: #aa8b6e;}
+
+		

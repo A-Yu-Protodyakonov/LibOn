@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" type="image/x-icon" href="img/library.png" />
-<title>LibOn :: Мой профиль</title>
+<title>LibOn :: Регистрация</title>
 </head>
 <body>
 <div class="header">
@@ -15,12 +15,8 @@
 			<a href="main.html" title="На главную"> LibOn </a>
 		</div>
 
-		<div class="leftmenu">
-			<a href="profile.html"> Мой профиль </a>
-		</div>
-
 		<ul class="menu">
-			<li class="item"><a href="auth.html"> Выход </a></li>
+			<li class="item"><a href="auth.html"> Вsход </a></li>
 		</ul>
 
 		 <div class="clear"></div>
@@ -31,39 +27,26 @@
 
 <div class="content">
 
-    <h1> Приветствуем! <h1>
+    <h1> Добавление книги <h1>
 
-    <h2>Ваши книги</h2>
+	<form method='post' class='reg-form' action="success_add.html">
 
-    <div class="tb">
-	
-		<table cols="3" border="2" align="center" cellpadding="5">
+		<div class='form-row'>
+			<label for='form_sname'> Название </label><br>
+    		<input type='text' id='form_name' name='name'>
+  		</div>
 
-			<tr>
-    			<th>Название</th>
-    			<th>Автор</th>
-   				<th>Срок сдачи</th>
-  			</tr>
- 
-  		</table>
+  		<div class='form-row'>
+    		<label for='form_fname'> Автор </label><br>
+    		<input type='text' id='form_author' name='author'>
+		</div>
+
+		<div class="form-row">
+			<input type="submit" value='Добавить'>
+		</div>
+		</form>
+
 	</div>
-
-	<h2>Ваши подписки</h2>
-
-    <div class="tb">
-	
-		<table cols="3" border="2" align="center" cellpadding="5">
-
-			<tr>
-    			<th>Название</th>
-    			<th>Последний выпуск</th>
-   				<th>Дата окончания подписки</th>
-  			</tr>
- 
-  		</table>
-	</div>
-
-</div>
 
 <div class="clear"><br /></div>
 
