@@ -1,8 +1,12 @@
-from interface import Interface, implements
+#from interface import Interface, implements
 
 
-class SystemMember(Interface):
+class SystemMember:
     memberName, memberLastname = None, None
+
+    def __init__(self, name, lastname):
+        self.memberName = name
+        self.memberLastname = lastname
 
     def set_name(self, name):
         self.memberName = name
