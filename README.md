@@ -1,5 +1,10 @@
 # LibOn
 Project for programming technology
+Ссылка на доску проекта в Trello: https://trello.com/b/EaeG12Zo
+
+Ссылка на проект в realtimeboard: https://realtimeboard.com/app/board/o9J_kxm3Ix0=/
+
+Ссылка на демо-видео: https://www.youtube.com/watch?v=90n4PjTnSTA
 Отчёт по ролям
 1.	Техническое Задание
 Работали: Дроботенко А. Д., Ломакин М. А., Протодьяконов А. Ю.
