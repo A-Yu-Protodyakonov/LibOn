@@ -152,6 +152,78 @@ def Add_book():
         return render_template('add_book.html', err='Такая книга уже существует')
 
 
+@app.route('/rubric')
+def rubric():
+    check = request.args.get('val', '')
+    # session['page'] = check
+    connect = sqlite3.connect(app.config['DATABASE'])
+    cursor = connect.cursor()
+    id_ = cursor.execute("""select RUBRIC_ID from RUBRIC where RUBRIC_NAME = \"{}\";""".format(check)).fetchone()
+    column_ = ('BOOK_NAME', 'AUTHOR', 'PUBLISH_YEAR')
+    books = cursor.execute("""select BOOK_ID, BOOK_NAME, AUTHOR, PUBLISH_YEAR from BOOK 
+    where RUBRIC_ID = {};""".format(id_[0])).fetchall()
+    return render_template('unitpoetry.html', name=check, book=books, column=column_, b=b, type=user_type)
+
+
+@app.route('/rubric_book')
+def rubric_book():
+    check = request.args.get('val', '')
+    connect = sqlite3.connect(app.config['DATABASE'])
+    cursor = connect.cursor()
+    book = cursor.execute("""select * from BOOK where BOOK_ID = \"{}\";""".format(check)).fetchone()
+    book = book[:-1]
+    if user_type == 'Admin':
+        return render_template('book1_admin.html', book=book)
+    else:
+        return render_template('book1.html', book=book, b=b)
+
+
+@app.route('/Add_to_order', methods=['GET', 'POST'])
+def Add_to_order():
+    check = dict(request.form)
+    global current_user
+    for x in check.keys():
+        if check[x] == 'Заказать':
+            ans = int(x)
+    current_user.add_to_order(ans)
+    return redirect(url_for('user_profile'))
+
+
+@app.route('/Delete_book', methods=['GET', 'POST'])
+def Delete_book():
+    check = dict(request.form)
+    global current_user
+    for x in check.keys():
+        if check[x] == 'Удалить':
+            ans = int(x)
+    current_user.delete_book(ans)
+    return redirect(url_for('main_page'))
+
+
+@app.route('/Delete_from_order', methods=['GET', 'POST'])
+def Delete_from_order():
+    check = dict(request.form)
+    global current_user
+    for x in check.keys():
+        if check[x] == 'Удалить':
+            ans = int(x)
+    current_user.delete_from_order(ans)
+    return redirect(url_for('user_profile'))
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    check = request.form['Поиск']
+    column_ = ('BOOK_NAME', 'AUTHOR', 'PUBLISH_YEAR')
+    connect = sqlite3.connect(app.config['DATABASE'])
+    cursor = connect.cursor()
+    cursor.execute("""select BOOK_ID, BOOK_NAME, AUTHOR, PUBLISH_YEAR from BOOK where BOOK_NAME 
+    like '%{}%' or BOOK_NAME like '%{}%'""".format(
+        check.title(), check.lower()))
+    data_ = cursor.fetchall()
+    return render_template('search.html', book=data_, b=b, type=user_type, column=column_)
+
+
 if __name__ == '__main__':
     app.jinja_env.filters['zip'] = zip
     app.run(debug=True)
