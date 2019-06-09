@@ -1,5 +1,6 @@
 # LibOn
-Project for programming technology
+Ссылка на сайт проекта: http://157.230.21.209:80
+
 Ссылка на доску проекта в Trello: https://trello.com/b/EaeG12Zo
 
 Ссылка на проект в realtimeboard: https://realtimeboard.com/app/board/o9J_kxm3Ix0=/
