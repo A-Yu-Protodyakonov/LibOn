@@ -5,7 +5,7 @@ from Administrator import Administrator
 from Book import Book
 import sqlite3
 import os
-from _datetime import date,datetime, timedelta
+from _datetime import date, datetime, timedelta
 
 app = Flask(__name__)
 
@@ -173,6 +173,10 @@ def rubric_book():
     cursor = connect.cursor()
     book = cursor.execute("""select * from BOOK where BOOK_ID = \"{}\";""".format(check)).fetchone()
     book = book[:-1]
+    if book[5] == 2:
+        book = book[:-1]+('Электронная',)
+    else:
+        book = book[:-1]+('Печатная',)
     if user_type == 'Admin':
         return render_template('book1_admin.html', book=book)
     else:
