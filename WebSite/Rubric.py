@@ -7,10 +7,10 @@ class Rubric:
 
     def __init__(self, name):
         Rubric.add_rubric(name)
-        self.rubric_name = name
+        self.rubric_name = name.lower().title()
 
     def set_rubric(self, name):
-        self.rubric_name = name
+        self.rubric_name = name.lower().title()
 
     def get_rubric(self):
         return self.rubric_name
@@ -24,7 +24,7 @@ class Rubric:
         connect = sqlite3.connect(Rubric.get_database())
         cursor = connect.cursor()
         rubric_id = cursor.execute("select RUBRIC_ID from RUBRIC where RUBRIC_NAME = \"{}\";".format(
-            name)).fetchone()
+            name.lower().title())).fetchone()
         if rubric_id is None:
-            cursor.execute("insert into RUBRIC (RUBRIC_NAME) values (\"{}\");".format(name))
+            cursor.execute("insert into RUBRIC (RUBRIC_NAME) values (\"{}\");".format(name.lower().title()))
             connect.commit()

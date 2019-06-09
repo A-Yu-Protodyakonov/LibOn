@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename = 'img/library.png')}}" />
+<title>LibOn :: Кнмга {{book[1]}}</title>
+</head>
+<body>
+<div class="header">
+
+	<div class="container">
+
+		<div class="logo">
+			<a href="{{ url_for('main_page') }}" title="На главную"> LibOn </a>
+		</div>
+		{% if b == False%}
+		<ul class="menu">
+			<li class="item"><a href="{{ url_for('registration') }}">Регистрация</a></li>
+			<li class="item"><a href="{{ url_for('log_in') }}"> Вход </a></li>
+		</ul>
+		{%else%}
+		<div class="leftmenu">
+			<a href="{{ url_for('user_profile') }}"> Мой профиль </a>
+		</div>
+		<ul class="menu">
+			<li class="item"><a href="{{ url_for('log_in') }}"> Выход </a></li>
+		</ul>
+		{%endif%}
+		 <div class="clear"></div>
+
+	</div>
+
+</div>
+
+<div class="content">
+
+    <h1> Книга </h1>
+
+
+    <div class="tb">
+	
+		<table border="2" align="center" cellpadding="5">
+
+			<tr>
+    			<th>Название</th>
+    			<th>Автор</th>
+          		<th>Год издания</th>
+				<th>Срок чтения</th>
+				<th>Тип книги</th>
+  			</tr>
+			<tr>
+  			{%for item in book[1:]%}
+				<td>{{item}}</td>
+			{%endfor%}
+			</tr>
+
+  		</table>
+	</div>
+
+</div>
+{% if b == True%}
+<form method='post' class='reg-form' action="{{ url_for('Add_to_order') }}">
+
+    <div class="form-row">
+      <input type="submit" name="{{book[0]}}" value='Заказать'>
+    </div>
+    </form>
+{%endif%}
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+<div class="clear"><br /></div>
+
+</body>
+</html>

@@ -5,8 +5,8 @@ class SystemMember:
     memberName, memberLastname = None, None
 
     def __init__(self, name, lastname):
-        self.memberName = name
-        self.memberLastname = lastname
+        self.memberName = name.title()
+        self.memberLastname = lastname.title()
 
     def set_name(self, name):
         self.memberName = name

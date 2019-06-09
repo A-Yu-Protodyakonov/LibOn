@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename = '/img/library.png')}}" />
+<title>LibOn :: Регистрация</title>
+</head>
+<body>
+<div class="header">
+
+	<div class="container">
+
+		<div class="logo">
+			<a href="{{ url_for('main_page') }}" title="На главную"> LibOn </a>
+		</div>
+
+		<ul class="menu">
+			<li class="item"><a href="{{ url_for('registration') }}">Регистрация</a></li>
+			<li class="item"><a href="{{ url_for('log_in') }}"> Вход </a></li>
+		</ul>
+
+		 <div class="clear"></div>
+
+	</div>
+
+</div>
+
+<div class="content">
+	
+    <h1> Регистрация <h1>
+	<label>{{err}}</label><br>
+	<form method='post' class='reg-form' action="{{ url_for('Registration') }}">
+
+		<div class='form-row'>
+			<label for='form_sname'>Фамилия</label><br>
+    		<input type='text' id='form_sname' name='second_name' required>
+  		</div>
+
+  		<div class='form-row'>
+    		<label for='form_fname'>Имя</label><br>
+    		<input type='text' id='form_fname' name='first_name' required>
+		</div>
+
+		<div class='form-row'>
+			<label for='form_email'>Email</label><br>
+			<input type='email' id='form_email' name='email' placeholder="name@mail.com" required>
+		</div>
+
+		<div class='form-row'>
+    		<label for='form_fpass'>Пароль</label><br>
+    		<input type='password' id='form_fpass' name='password' value="1111" required>
+		</div>
+
+		<div class="form-row">
+			<input type="submit" value='Зарегистрироваться'>
+		</div>
+		</form>
+
+	</div>
+
+<div class="clear"><br /></div>
+
+</div>
+</body>
+</html>

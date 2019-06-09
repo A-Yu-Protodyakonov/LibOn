@@ -16,21 +16,19 @@ class User(SystemMember):
         self.email = email
         self.password = password
 
-    def add_to_order(self, new_book: Book):
+    def add_to_order(self, book_id):
         now = date.today()
         connect = sqlite3.connect(self.Database)
         cursor = connect.cursor()
         cursor.execute("INSERT INTO _ORDER (START_DATE, BOOK_ID, USER_ID) VALUES (\"{}\", {}, {}); ".format(
-            now, new_book.id, self.id))
+            now, book_id, self.id))
         connect.commit()
-        row = cursor.execute("SELECT START_DATE FROM _ORDER").fetchone()
-        print('The date is {0} and the datatype is {1}'.format(row[0], type(row[0])))
 
-    def delete_from_order(self, book: Book):
+    def delete_from_order(self, book_id):
         connect = sqlite3.connect(self.Database)
         cursor = connect.cursor()
         order_id = cursor.execute("select ORDER_ID from _ORDER where BOOK_ID = {} and USER_ID = {}; ".format(
-            book.id, self.id)).fetchone()
+            book_id, self.id)).fetchone()
         cursor.execute("delete from _ORDER where ORDER_ID = {};".format(order_id[0]))
         connect.commit()
 

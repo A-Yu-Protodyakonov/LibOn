@@ -21,16 +21,18 @@ class Administrator(SystemMember):
         cursor = connect.cursor()
         rubric_id = cursor.execute("select RUBRIC_ID from RUBRIC where RUBRIC_NAME = \"{}\";".format(
             new_book.rubric_name)).fetchone()
-        cursor.execute("INSERT INTO BOOK (BOOK_NAME, AUTHOR, RENTAL_TIME, BOOK_TYPE, RUBRIC_ID) VALUES (\"{}\", \"{}\","
-                       "{},{},{});".format(new_book.element_name, new_book.Author, new_book.rentalTime, new_book.type,
-                                           rubric_id[0]))
+        cursor.execute("INSERT INTO BOOK (BOOK_NAME, AUTHOR, PUBLISH_YEAR ,RENTAL_TIME, BOOK_TYPE, RUBRIC_ID) VALUES ("
+                       "\"{}\", \"{}\",\"{}\", {},{},{});".format(
+                        new_book.element_name.lower().title(), new_book.Author.lower().title(), new_book.publish_year,
+                        new_book.rentalTime, new_book.type, rubric_id[0]))
         cursor.execute("insert into BOOK_ADMINISTRATOR values ({}, {});".format(new_book.id, self.id))
         connect.commit()
 
-    def delete_book(self, book: Book):
+    def delete_book(self, book_id):
         connect = sqlite3.connect(self.Database)
         cursor = connect.cursor()
-        cursor.execute("delete from BOOK where BOOK_ID = {};".format(book.id))
+        cursor.execute("delete from BOOK where BOOK_ID = {};".format(book_id))
+        cursor.execute("delete from BOOK_ADMINISTRATOR where BOOK_ID = {};".format(book_id))
         connect.commit()
 
     def change_book(self, book):
