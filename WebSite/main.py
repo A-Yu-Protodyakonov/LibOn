@@ -34,8 +34,9 @@ def main_page():
 
 @app.route('/log_in')
 def log_in():
-    global current_user
+    global current_user, user_type
     current_user = None
+    user_type= None
     return render_template('auth.html', err='')
 
 
