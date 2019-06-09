@@ -96,6 +96,62 @@ def Log_in():
                 return redirect(url_for('user_profile'))
 
 
+@app.route('/user_profile')
+def user_profile():
+    connect = sqlite3.connect(app.config['DATABASE'])
+    cursor = connect.cursor()
+    data_= tuple()
+    check = cursor.execute("""select BOOK.BOOK_ID, BOOK.BOOK_NAME, BOOK.AUTHOR, BOOK.RENTAL_TIME 
+                            from BOOK 
+                            where BOOK.BOOK_ID IN ( 
+                            select _ORDER.BOOK_ID 
+                            from _ORDER 
+                            where USER_ID = {})""".format(current_user.id)).fetchall()
+    for item in check:
+        second_check = cursor.execute("""select START_DATE 
+                                        from _ORDER 
+                                        where BOOK_ID = {} and USER_ID = {} 
+                                        """.format(item[0], current_user.id)).fetchone()
+        date_ = datetime.strptime(second_check[0], '%Y-%m-%d').date() + timedelta(days=item[3])
+        data_ += ((item[0], item[1], item[2], date_.strftime('%Y-%m-%d')),)
+    return render_template('profile_user.html', name=current_user.memberName, surname=current_user.memberLastname,
+                            data=data_)
+
+
+@app.route('/admin_profile')
+def admin_profile():
+    return render_template('profile_admin.html', name=current_user.memberName, surname=current_user.memberLastname)
+
+
+@app.route('/add_book', methods=['GET', 'POST'])
+def add_book():
+    return render_template('add_book.html', err='')
+
+
+@app.route('/Add_book', methods=['GET', 'POST'])
+def Add_book():
+    connect = sqlite3.connect(app.config['DATABASE'])
+    cursor = connect.cursor()
+    global current_user
+    if request.form['book_type'] == 'on':
+        b = 2
+    else:
+        b = 1
+    check = cursor.execute("""select * from BOOK where BOOK_NAME = \"{}\" and Author = \"{}\" and 
+                            PUBLISH_YEAR = \"{}\" and BOOK_TYPE = {};""".format(
+        request.form['name'], request.form['author'], request.form['publish_year'], b)).fetchone()
+    if check is None:
+        id_ = cursor.execute("SELECT MAX(BOOK_ID) FROM BOOK;").fetchone()
+        if id_[0] is None:
+            id_ = (0,)
+        book = Book(id_[0]+1, request.form['name'], request.form['rubric_name'], request.form['author'],
+                    request.form['publish_year'], request.form['rental_time'], request.form['book_type'])
+        current_user.add_book(book)
+        return render_template('success_add.html')
+    else:
+        return render_template('add_book.html', err='Такая книга уже существует')
+
+
 if __name__ == '__main__':
     app.jinja_env.filters['zip'] = zip
     app.run(debug=True)
